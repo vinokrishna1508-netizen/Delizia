@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Delizia — Reserve a Table</title>
+  <meta name="description" content="Delizia — Cozy restaurant. Reserve a table online. Single page landing website." />
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <style>
+    :root{
+      --accent:#d7302a; /* warm red */
+      --accent-2:#ffb86b; /* warm orange */
+      --bg:#0f1720;
+      --muted:#9aa4ad;
+      --card:#0f1a22;
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#071022 0%, #0b1320 60%);color:#f7f9fb;line-height:1.45}
+    a{color:inherit;text-decoration:none}
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(6,10,15,0.75), rgba(6,10,15,0.45));backdrop-filter: blur(6px);padding:18px 28px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.6px}
+    .logo .mark{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);font-weight:600}
+    .btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
+
+    .container{max-width:1100px;margin:0 auto;padding:48px 24px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:36px 0}
+    .hero h1{font-size:44px;margin:0 0 12px}
+    .lead{color:var(--muted);margin-bottom:20px}
+    .hero .cta-row{display:flex;gap:12px;align-items:center}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:18px;padding:18px}
+
+    /* Image panel */
+    .hero-visual{border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(2,6,12,0.6)}
+    .hero-visual img{display:block;width:100%;height:100%;object-fit:cover}
+
+    /* Features */
+    .features{display:flex;gap:14px;margin-top:26px}
+    .feature{flex:1;padding:14px;border-radius:12px;background:var(--glass);text-align:center}
+    .feature h4{margin:8px 0 4px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Menu & gallery */
+    .section{padding:48px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .dish{border-radius:12px;overflow:hidden;background:#07121a}
+    .dish img{width:100%;height:170px;object-fit:cover;display:block}
+    .dish .meta{padding:12px}
+    .dish h5{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    /* Reservation */
+    .reserve-wrap{display:flex;gap:22px;align-items:stretch}
+    .reserve-form{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+    .form-row{display:flex;gap:10px}
+    .form-row input,.form-row select{flex:1;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit}
+    label{font-size:13px;color:var(--muted)}
+
+    .testimonials{display:flex;gap:14px}
+    .quote{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+    footer{padding:28px 0;color:var(--muted)}
+
+    /* Small screens */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:34px}
+      .hero-visual{height:320px}
+    }
+    @media (max-width:520px){
+      nav{display:none}
+      .grid{grid-template-columns:1fr}
+      .reserve-wrap{flex-direction:column}
+    }
+
+    /* subtle button hover */
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(215,48,42,0.14)}
+
+    .badge{display:inline-block;padding:6px 10px;background:linear-gradient(90deg,var(--accent-2),var(--accent));border-radius:999px;color:#06101a;font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="mark">D</div>
+      <div>
+        <div style="font-size:16px">Delizia</div>
+        <div style="font-size:12px;color:var(--muted)">Modern Italian • Cozy vibes</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#about">About</a>
+      <button class="btn" onclick="document.getElementById('reserve').scrollIntoView({behavior:'smooth'})">Reserve</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="badge">Open Tonight • 7pm–11pm</div>
+        <h1>Delizia — Book your table for an unforgettable dinner</h1>
+        <p class="lead">Seasonal ingredients, wood-fired flavors, and warm hospitality. Reserve a table or browse our curated menu and gallery.</p>
+
+        <div class="cta-row">
+          <button class="btn" onclick="document.getElementById('reserve').scrollIntoView({behavior:'smooth'})">Book a Table</button>
+          <a href="#menu" style="padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);font-weight:700">View Menu</a>
+        </div>
+
+        <div class="features" aria-hidden>
+          <div class="feature card">
+            <strong>Private Dining</strong>
+            <p>Intimate rooms for special occasions.</p>
+          </div>
+          <div class="feature card">
+            <strong>Fast Booking</strong>
+            <p>Reserve in under 60 seconds.</p>
+          </div>
+          <div class="feature card">
+            <strong>Top Chefs</strong>
+            <p>Seasonal tasting menu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- Hero image from Unsplash - change as you like -->
+        <img src="https://images.unsplash.com/photo-1555992336-03a23c2f3d9d?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9f7b7d8f7f9a2f146c63f0a6d1f3b1b2" alt="Restaurant dining table with warm lighting" />
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <h2>Popular dishes</h2>
+      <p class="muted">A selection of customer favorites and chef specials.</p>
+      <div class="grid" style="margin-top:18px">
+        <article class="dish">
+          <img src="https://images.unsplash.com/photo-1543352634-8f3d6c0e6d1b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f6a5b4f9c7a8d0f6e3e5b8d1a1b2c3d" alt="Pizza" />
+          <div class="meta">
+            <h5>Wood-fired Margherita</h5>
+            <div class="muted">San Marzano, buffalo mozzarella • ₹499</div>
+          </div>
+        </article>
+        <article class="dish">
+          <img src="https://images.unsplash.com/photo-1541542684-4b3f0476f3af?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a5c8f7b2c9d4e8f1a2b3c4d5e6f7a8b" alt="Pasta" />
+          <div class="meta">
+            <h5>Truffle Tagliatelle</h5>
+            <div class="muted">Black truffle, parmesan • ₹699</div>
+          </div>
+        </article>
+        <article class="dish">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a4e6b5c8d9f1a2b3c4d5e6f7a8b9c0d" alt="Dessert" />
+          <div class="meta">
+            <h5>Chocolate Torte</h5>
+            <div class="muted">Hazelnut • ₹299</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <h2>Gallery</h2>
+      <p class="muted">A glimpse of our space and moments.</p>
+      <div class="grid" style="margin-top:18px">
+        <div style="border-radius:12px;overflow:hidden"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef1234567890" alt="Dining" style="width:100%;height:220px;object-fit:cover"/></div>
+        <div style="border-radius:12px;overflow:hidden"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef1112131415" alt="Bar" style="width:100%;height:220px;object-fit:cover"/></div>
+        <div style="border-radius:12px;overflow:hidden"><img src="https://images.unsplash.com/photo-1523475496153-3d6cc6d9b1ad?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef2223242526" alt="Chef" style="width:100%;height:220px;object-fit:cover"/></div>
+      </div>
+    </section>
+
+    <section id="reserve" class="section">
+      <h2>Reserve a Table</h2>
+      <p class="muted">Quick reservation — we'll hold your table for 15 minutes after the selected time.</p>
+      <div class="reserve-wrap" style="margin-top:18px">
+           <div style="margin-top:20px">
+      <!-- BLANK iframe: leave src empty so you can add your external contact form URL -->
+      <iframe id="contact-iframe" src="https://n8n-6qkv.onrender.com/form/c7611f10-9b90-4f5b-b275-78033c5c862f" title="Contact Form" style="width:100%;height:600px;border:0;border-radius:12px;margin-top:12px;background:#fff"></iframe>
+  
+    </div>
+        <aside style="width:320px">
+          <div class="card" style="padding:18px">
+            <h4>Opening Hours</h4>
+            <p class="muted">Mon–Thu: 12pm–11pm<br/>Fri–Sun: 11am–11:30pm</p>
+            <h4 style="margin-top:12px">Location</h4>
+            <p class="muted">12 Lotus Lane, Foodie Street, Mumbai</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Delizia</h2>
+      <p class="muted">We craft seasonal Italian dishes with a focus on fresh produce and classic techniques — served in a relaxed, candlelit atmosphere.</p>
+
+      <div style="margin-top:18px;display:flex;gap:14px;align-items:flex-start">
+        <div style="flex:1">
+          <div class="testimonials">
+            <div class="quote">
+              <strong>"Fantastic food — a must-visit"</strong>
+              <p class="muted">— Rahul K.</p>
+            </div>
+            <div class="quote">
+              <strong>"Cozy place for dates"</strong>
+              <p class="muted">— Meera S.</p>
+            </div>
+          </div>
+        </div>
+        <div style="width:240px;text-align:right">
+          <div class="muted">Follow us</div>
+          <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer and the BLANK iframe for external contact form (user requested) -->
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+      <div>
+        <strong>Delizia</strong>
+        <div class="muted">© <span id="year"></span> Delizia Restaurant</div>
+      </div>
+      <div class="muted">123 Foodie Street, Mumbai • +91 98765 43210</div>
+    </div>
+
+
+  </footer>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleReserve(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const name = data.get('name');
+      const party = data.get('party');
+      const date = data.get('date');
+      const time = data.get('time');
+      const notes = data.get('notes');
+
+      // This demo simply shows a confirmation message. Replace with an AJAX POST to your booking API.
+      const result = document.getElementById('reserve-result');
+      result.style.color = '#a8ffd5';
+      result.textContent = `Thanks ${name || ''}! Reservation for ${party} on ${date} at ${time} requested. We'll contact you to confirm.`;
+
+      // Example: to actually submit, uncomment and set your endpoint:
+      // fetch('/api/reservations',{method:'POST',body:JSON.stringify({name,party,date,time,notes}),headers:{'Content-Type':'application/json'}})
+      //  .then(r=>r.json()).then(j=> result.textContent = 'Confirmed: '+j.confirmation)
+    }
+
+    // Utility: allow setting iframe src via query param e.g. ?form=https://example.com/form
+    (function(){
+      try{
+        const qp = new URLSearchParams(location.search).get('form');
+        if(qp){
+          document.getElementById('contact-iframe').src = qp;
+        }
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
